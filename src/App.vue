@@ -1,28 +1,70 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="rgb(0, 0, 0)"
+      dark
+    >
+      <Transition appear>
+        <h2 style="font-family: Misa;">Seth.dev</h2>
+      </Transition>
+      <!-- <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <DateAndClock center></DateAndClock> -->
+      <v-spacer></v-spacer>
+      <v-btn
+        text
+        @click="toHomePage"
+      >
+        <span class="mr-2">Home</span>
+      </v-btn>
+      <v-btn
+        text
+        @click="toAboutPage"
+      >
+        <span class="mr-2">About</span>
+      </v-btn>
+      <v-btn
+        text
+        @click="toStuffsImInterestedIn"
+      >
+        <span class="mr-2">Interesting Stuff</span>
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import router from '@/router'
+// import DateAndClock from './components/DateAndClock.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+  },
+  // components: {
+  //   DateAndClock
+  // },
+  methods: {
+    toHomePage () {
+      router.push('/').catch(function () { return {} })
+    },
+    toAboutPage () {
+      router.push('/about').catch(function () { return {} })
+    },
+    toStuffsImInterestedIn () {
+      router.push('/interesting').catch(function () { return {} })
+    }
   }
 }
-</script>
 
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @font-face {
+    font-family: 'Misa';
+    src: url('../src/assets/fonts/13_Misa.TTF');
+  }
 </style>
